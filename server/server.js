@@ -1,5 +1,14 @@
 const grpc = require("grpc");
-const pingPongProto = grpc.load("ping_pong.proto");
+const protoLoader = require("@grpc/proto-loader");
+
+const packageDefinition = protoLoader.loadSync("ping_pong.proto", {
+  keepCase: true,
+  longs: String,
+  enums: String,
+  defaults: true,
+  oneofs: true,
+});
+const pingPongProto = grpc.loadPackageDefinition(packageDefinition);
 const server = new grpc.Server();
 
 server.addService(pingPongProto.pingpong.PingPongService.service, {
@@ -9,5 +18,5 @@ server.addService(pingPongProto.pingpong.PingPongService.service, {
   },
 });
 
-server.bind("localhost:8080", grpc.ServerCredentials.createInsecure());
+server.bind("0.0.0.0:8080", grpc.ServerCredentials.createInsecure());
 server.start();
