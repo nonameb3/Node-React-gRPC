@@ -14,9 +14,9 @@ function App() {
 
     client.pingPong(request, {}, (err, response) => {
       if (response == null) {
-        console.log(err);
+        console.log("error", err);
       } else {
-        console.log(response.getPong());
+        console.log("response", response.getPong());
       }
     });
   }

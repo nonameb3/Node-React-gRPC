@@ -18,5 +18,8 @@ server.addService(pingPongProto.pingpong.PingPongService.service, {
   },
 });
 
-server.bind("0.0.0.0:8080", grpc.ServerCredentials.createInsecure());
-server.start();
+server.bindAsync("0.0.0.0:8080", grpc.ServerCredentials.createInsecure(), (err, port) => {
+  if (err) return console.log("error: ", err.message);
+  server.start();
+  console.log("server start at: " + port);
+});
