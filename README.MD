@@ -1,7 +1,7 @@
 ## Generating client-side code in javascript,
 
 ```
- $protoc -I=. src/ping_pong.proto --js_out=import_style=commonjs:. --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
+ $protoc -I=. src/grpc/main/proto/greet/greet.proto --js_out=import_style=commonjs:. --grpc-web_out=import_style=commonjs,mode=grpcwebtext:.
 ```
 
 ## Install package and start
