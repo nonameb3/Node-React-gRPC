@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
-Streamconst { GreetServiceClient } = require("./grpc/main/proto/greet/greet_grpc_web_pb");
+const { GreetServiceClient } = require("./grpc/main/proto/greet/greet_grpc_web_pb");
 const { GreetRequest, Empty, Greeting } = require("./grpc/main/proto/greet/greet_pb");
 
 const client = new GreetServiceClient("http://localhost:9090", null, null);
